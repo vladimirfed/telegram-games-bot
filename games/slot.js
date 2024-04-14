@@ -1,5 +1,5 @@
 import { balance, setBalance } from "../balance.js";
-import { gamesOptions } from "../options.js";
+import { gamesOptions } from "../options/options.js";
 
 const winningCombinations = [22, 43, 53, 64]; 
 

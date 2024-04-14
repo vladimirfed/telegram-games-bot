@@ -1,14 +1,14 @@
-import { Telegraf, Markup } from 'telegraf'
+import { Telegraf } from "telegraf";
 import { message } from "telegraf/filters";
-import { menuOptions, gamesOptions } from "./options.js";
+import { menuOptions, gamesOptions } from "./options/options.js";
 import { onSlot } from "./games/slot.js";
-import { onDice } from "./games/dice.js";
+import { onDice, onDiceBet } from "./games/dice.js";
 import { balance } from "./balance.js";
-import dotenv from 'dotenv';
-dotenv.config(); 
+import dotenv from "dotenv";
+dotenv.config();
 
-const bot = new Telegraf(process.env.BOT_TOKEN); 
-  
+const bot = new Telegraf(process.env.BOT_TOKEN);
+
 bot.start((ctx) => onStart(ctx));
 bot.help((ctx) => ctx.reply("You can contact administrator for help"));
 bot.command("games", (ctx) => ctx.reply("Games", gamesOptions));
@@ -50,7 +50,37 @@ bot.on("callback_query", (ctx) => {
       onSlot(ctx);
       break;
     case "/dice":
-      onDice(ctx);
+      onDice(ctx, bot);
+      break;
+    case "/dice1":
+      onDiceBet(ctx, '1');
+      break;
+    case "/dice2":
+      onDiceBet(ctx, '2');
+      break;
+    case "/dice3":
+      onDiceBet(ctx, '3');
+      break;
+    case "/dice4":
+      onDiceBet(ctx, '4');
+      break;
+    case "/dice5":
+      onDiceBet(ctx, '5');
+      break;
+    case "/dice6":
+      onDiceBet(ctx, '6');
+      break;
+    case "/diceOdd":
+      onDiceBet(ctx, 'Odd');
+      break;
+    case "/diceEven":
+      onDiceBet(ctx, 'Even');;
+      break;
+    case "/dice13":
+      onDiceBet(ctx, '1-3');
+      break;
+    case "/dice46":
+      onDiceBet(ctx, '4-6');
       break;
     default:
       break;

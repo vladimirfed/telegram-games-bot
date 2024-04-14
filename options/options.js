@@ -26,3 +26,15 @@ export const gamesOptions = {
     ],
   }),
 };
+
+export const diceBetOptions = {
+  reply_markup: JSON.stringify({
+    inline_keyboard: [
+      [{ text: "1", callback_data: "/dice1" },{ text: "2", callback_data: "/dice2" },{ text: "3", callback_data: "/dice3" }],
+      [{ text: "4", callback_data: "/dice4" },{ text: "5", callback_data: "/dice5" },{ text: "6", callback_data: "/dice6" }],
+      [{ text: "Odd", callback_data: "/diceOdd" },{ text: "Even", callback_data: "/diceEven" }],
+      [{ text: "1 - 3", callback_data: "/dice13" },{ text: "4 - 6", callback_data: "/dice46" }],
+      [{ text: "🔙 Games", callback_data: "/games" }],
+    ],
+  }),
+};
