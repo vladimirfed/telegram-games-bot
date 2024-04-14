@@ -1,15 +1,14 @@
-import dotenv from 'dotenv';  // Import the dotenv module
-dotenv.config(); 
-import { Telegraf } from "telegraf";
+import { Telegraf, Markup } from 'telegraf'
 import { message } from "telegraf/filters";
 import { menuOptions, gamesOptions } from "./options.js";
 import { onSlot } from "./games/slot.js";
 import { onDice } from "./games/dice.js";
 import { balance } from "./balance.js";
+import dotenv from 'dotenv';
+dotenv.config(); 
 
 const bot = new Telegraf(process.env.BOT_TOKEN); 
-
-// const bot = new Telegraf("6958125370:AAFGqHewBU7pckcq62ex9uT_BrIoNVP39Pk");
+  
 bot.start((ctx) => onStart(ctx));
 bot.help((ctx) => ctx.reply("You can contact administrator for help"));
 bot.command("games", (ctx) => ctx.reply("Games", gamesOptions));
